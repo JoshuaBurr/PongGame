@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
-<body>
+  <html>
+  <body>
+    <script>
 
-<script>
-
-
-/* Procedurial Pong version 1.0, developed by Josh Burr. Credit to Pong clone in javascript and Mr.Carrier for help*/
-
-
+/* Procedurial Pong version 1.0, developed by Josh Burr.
+https://github.com/JoshuaBurr
+*/
 
 // Pre processing Canvas setup
 var animate = window.requestAnimationFrame ||
@@ -28,19 +26,13 @@ window.onload = function() {
 function DisplayFrames(){
 setInterval(NextFrame,10);
 }
-
 var keysDown = {};
-// if keydown is called then event keydown is true
-window.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", function(event) {// if keydown is called then event keydown is true
   keysDown[event.keyCode] = true;
 });
-//if keydown is not called then delete event listener
-window.addEventListener("keyup", function(event) {
+window.addEventListener("keyup", function(event) {//if keydown is not called then delete event listener
   delete keysDown[event.keyCode];
 });
-
-
-
 // Global Variables and initializations
 var paddleheight;
 var paddlewidth;
@@ -90,24 +82,6 @@ var xspeed;
 var yspeed;
 xspeed = 3;
 yspeed = 0;
-//attempt to make the ball reset to go the correct directions
-var leftscore
-leftscore = xspeed
-leftscore = yspeed
-var rightscore
-rightscore = -xspeed
-rightscore = -yspeed
-
-
-
-
-
-
-
-
-
-
-
 
 // Function declarations
 function DrawGamePieces()
@@ -130,9 +104,7 @@ context.fillStyle = "green";
 context.arc(ballx, bally, 2*radius,0,2 * Math.PI, false);
 context.fill();
 context.stroke();
-
 }
-
 // Outline what goes on in each animation frame
 function EraseGamePieces(){
 context.beginPath();
@@ -152,9 +124,6 @@ function Resetball(){
   xspeed=3;
   yspeed=0;
 }
-
-
-
 //where all the functions get called
 function NextFrame(){
 EraseGamePieces();
@@ -166,7 +135,6 @@ oldballx=ballx;
 ballx+=xspeed;
 bally+=yspeed;
 
-
 //keydown event
 for(var key in keysDown) {
   var value = Number(key);
@@ -176,21 +144,16 @@ for(var key in keysDown) {
     player1y += paddle1speed;
   } else {}
   }
+
 //if the ball goes past max x (600) then reset the ball to leftscore
 if (ballx > 600) {
   score1 += 1;
 Resetball();
 }
-
-
 if (ballx < 0)  {
   score2 += 1;
 Resetball();
 }
-
-
-
-
 // Bouncing off top and bottom
 if(bally - 5 < 0)
   { // hitting the bottom wall
@@ -218,7 +181,6 @@ if(bally - 5 < 0)
       { // hitting the top wall
         player2y = 350;
       }
-
 // Bouncing off paddles
 if (ballx > 300)
   {
@@ -246,21 +208,11 @@ if (ballx > 300)
       }
     }
 }
-
-
-
-
-
-
-
-
-
 // Animate the game
 DisplayFrames();
 
 document.getElementById('score1').innerHTML = s;
 document.getElementById('score2').innerHTML = s;
-
 
 </script>
 
